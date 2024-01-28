@@ -10,14 +10,14 @@ class ViewController: UIViewController {
         return imageView
     }()
 
-    private lazy var buttonLogin: UIButton = {
-        let buttonLogin = UIButton()
-        buttonLogin.setTitle("Login", for: .normal)
-        buttonLogin.backgroundColor = .systemIndigo
-        buttonLogin.setTitleColor(UIColor.white, for: UIControl.State.normal)
-        buttonLogin.layer.cornerRadius = 20
-        buttonLogin.translatesAutoresizingMaskIntoConstraints = false
-        return buttonLogin
+    private lazy var labelLogin: UILabel = {
+        let labelLogin = UILabel()
+        labelLogin.text = "Login"
+        labelLogin.textColor = .white
+        labelLogin.font = UIFont.systemFont(ofSize: 44, weight: .bold)
+        labelLogin.textAlignment = .center
+        labelLogin.translatesAutoresizingMaskIntoConstraints = false
+        return labelLogin
     }()
 
     private lazy var textFieldName: UITextField = {
@@ -28,8 +28,6 @@ class ViewController: UIViewController {
         textFieldName.backgroundColor = .white
         textFieldName.setLeftIcon(imageUsername!)
         textFieldName.layer.cornerRadius = 20
-        textFieldName.layer.borderColor = UIColor.black.cgColor
-        textFieldName.layer.borderWidth = 1
         return textFieldName
     }()
 
@@ -41,8 +39,6 @@ class ViewController: UIViewController {
         textFieldPassword.backgroundColor = .white
         textFieldPassword.setLeftIcon(imagePassword!)
         textFieldPassword.layer.cornerRadius = 20
-        textFieldPassword.layer.borderColor = UIColor.black.cgColor
-        textFieldPassword.layer.borderWidth = 1
         return textFieldPassword
     }()
 
@@ -60,21 +56,47 @@ class ViewController: UIViewController {
         return stack
     }()
 
-    private lazy var labelLogin: UILabel = {
-        let labelLogin = UILabel()
-        labelLogin.text = "Login"
-        labelLogin.textColor = .white
-        labelLogin.font = UIFont.systemFont(ofSize: 44, weight: .bold)
-        labelLogin.textAlignment = .center
-        labelLogin.translatesAutoresizingMaskIntoConstraints = false
-        return labelLogin
+    private lazy var buttonLogin: UIButton = {
+        let buttonLogin = UIButton()
+        buttonLogin.setTitle("Login", for: .normal)
+        buttonLogin.backgroundColor = .systemIndigo
+        buttonLogin.setTitleColor(.white, for: .normal)
+        buttonLogin.layer.cornerRadius = 20
+        buttonLogin.translatesAutoresizingMaskIntoConstraints = false
+        return buttonLogin
     }()
 
-    private lazy var lineAndText: UIView = {
-        let lineAndText = UIView()
-        lineAndText.backgroundColor = .black
-        lineAndText.translatesAutoresizingMaskIntoConstraints = false
-        return lineAndText
+    private lazy var buttonForgotPassword: UIButton = {
+        let buttonForgotPassword = UIButton()
+        buttonForgotPassword.setTitle("Forgot your password?", for: .normal)
+        buttonForgotPassword.titleLabel?.font = .systemFont(ofSize: 12, weight: .semibold)
+        buttonForgotPassword.backgroundColor = .clear
+        buttonForgotPassword.setTitleColor(.systemGray, for: .normal)
+        buttonForgotPassword.translatesAutoresizingMaskIntoConstraints = false
+        return buttonForgotPassword
+    }()
+
+    private lazy var lineLeft: UIView = {
+        let lineLeft = UIView()
+        lineLeft.backgroundColor = .gray
+        lineLeft.translatesAutoresizingMaskIntoConstraints = false
+        return lineLeft
+    }()
+
+    private lazy var lineRight: UIView = {
+        let lineRight = UIView()
+        lineRight.backgroundColor = .gray
+        lineRight.translatesAutoresizingMaskIntoConstraints = false
+        return lineRight
+    }()
+
+    private lazy var labelConnectWith: UILabel = {
+        let labelConnectWith = UILabel()
+        labelConnectWith.text = "or connect with"
+        labelConnectWith.textColor = .systemGray2
+        labelConnectWith.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        labelConnectWith.translatesAutoresizingMaskIntoConstraints = false
+        return labelConnectWith
     }()
 
     private lazy var buttonFacebook: UIButton = {
@@ -121,7 +143,10 @@ class ViewController: UIViewController {
         view.addSubview(labelLogin)
         view.addSubview(stack)
         view.addSubview(buttonLogin)
-        view.addSubview(lineAndText)
+        view.addSubview(buttonForgotPassword)
+        view.addSubview(lineLeft)
+        view.addSubview(labelConnectWith)
+        view.addSubview(lineRight)
         view.addSubview(buttonFacebook)
         view.addSubview(buttomTwitter)
     }
@@ -141,15 +166,31 @@ class ViewController: UIViewController {
             textFieldPassword.heightAnchor.constraint(equalToConstant: 40),
 
             buttonLogin.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            buttonLogin.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 60),
-            buttonLogin.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
-            buttonLogin.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60),
+            buttonLogin.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -60),
+            buttonLogin.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            buttonLogin.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
             buttonLogin.heightAnchor.constraint(equalToConstant: 40),
 
-            lineAndText.bottomAnchor.constraint(equalTo: buttonLogin.topAnchor, constant: 150),
-            lineAndText.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            lineAndText.widthAnchor.constraint(equalToConstant: 250),
-            lineAndText.heightAnchor.constraint(equalToConstant: 0.5),
+            buttonForgotPassword.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            buttonForgotPassword.topAnchor.constraint(equalTo: buttonLogin.bottomAnchor, constant: 20),
+            buttonForgotPassword.heightAnchor.constraint(equalToConstant: 10),
+
+            lineLeft.bottomAnchor.constraint(equalTo: buttonLogin.topAnchor, constant: 260),
+            lineLeft.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            lineLeft.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            lineLeft.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -250),
+            lineLeft.widthAnchor.constraint(equalToConstant: 250),
+            lineLeft.heightAnchor.constraint(equalToConstant: 0.5),
+
+            labelConnectWith.topAnchor.constraint(equalTo: buttonLogin.bottomAnchor, constant: 210),
+            labelConnectWith.leadingAnchor.constraint(equalTo: lineLeft.trailingAnchor, constant: 10),
+
+            lineRight.bottomAnchor.constraint(equalTo: buttonLogin.topAnchor, constant: 260),
+            lineRight.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            lineRight.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 250),
+            lineRight.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            lineRight.widthAnchor.constraint(equalToConstant: 250),
+            lineRight.heightAnchor.constraint(equalToConstant: 0.5),
 
             buttonFacebook.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -100),
             buttonFacebook.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 250),
